@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EventRetrieverService } from './event-retriever.service';
-import { Event } from './event';
+import { EventsComponent } from './events/events.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,6 @@ import { Event } from './event';
 })
 export class AppComponent {
 
-  title = 'app works!';
-  
+  title = 'Zenith Society Events for the Current Week';
+
 }

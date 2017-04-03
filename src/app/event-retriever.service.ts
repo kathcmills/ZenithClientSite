@@ -9,9 +9,10 @@ export class EventRetrieverService {
 
   constructor(private http: Http) { }
 
-  private BASE_URL = "http://localhost:5000/api/events";
+  private BASE_URL = "http://zenithwebsiteasn2.azurewebsites.net/api/events";
+  //private BASE_URL = "http://localhost:5000/api/events";
 
-  getEventsForWeek(): Promise<Event[]> {
+  getEvents(): Promise<Event[]> {
   return this.http.get(this.BASE_URL)
    .toPromise()
    .then(response => response.json() as Event[])

@@ -4,7 +4,7 @@ import { EventRetrieverService } from '../event-retriever.service';
 import { Event } from '../event';
 
 @Component({
-  selector: 'app-events',
+  selector: 'events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css'],
   providers: [EventRetrieverService]
@@ -12,17 +12,26 @@ import { Event } from '../event';
 export class EventsComponent implements OnInit {
 
   ngOnInit() {
+    this.today = new Date();
+    this.weekStart = new Date(this.today.setDate(this.today.getDate() - this.today.getDay()));;
+    this.weekEnd = new Date(this.today.setDate(this.today.getDate() - this.today.getDay()+6));
     this.getEventsForWeek();
   }
 
-  eventsForWeek : Event[];
+  today : Date;
+  weekStart : Date;
+  weekEnd : Date;
+  eventsForWeek : Array<Event>;
 
   constructor(private eventRetriever: EventRetrieverService) {
 
   }
-
+  
   getEventsForWeek() : void {
-    this.eventRetriever.getEventsForWeek().then(events => this.eventsForWeek = events);
+    this.eventRetriever.getEvents()
+    .then(events => this.eventsForWeek = events.filter(
+      ev => {return (ev.EventFrom > this.weekStart) && (ev.EventFrom < this.weekEnd);}
+      ));
   }
 
 }

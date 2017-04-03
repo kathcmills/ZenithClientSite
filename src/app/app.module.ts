@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
+import { EventRetrieverService } from './event-retriever.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { EventsComponent } from './events/events.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [EventRetrieverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

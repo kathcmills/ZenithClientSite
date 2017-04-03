@@ -1,20 +1,6 @@
-<p>
-  events works!
-</p>
-
 <table class="table">
-            *ngFor(let day of week; let i=index;)
-            {
-                <tr class="active">
-                    <td colspan="2">{{day.ToString}}</td>
-                </tr>
-
-                *ngFor(let event of day; let i=index;)
-                {
-                    <tr>
-                        <td>{{event.From}} to {{event.To}}</td>
-                        <td>{{event.Activity.ActivityDesc}}</td>
-                    </tr>
-                }
-            }
-        </table>
+    <tr *ngFor="let ev of eventsForWeek;" class="active">
+        <td>{{ev.From}} to {{ev.To}}</td>
+        <td>{{ev.Activity.ActivityDesc}}</td>
+    </tr>          
+</table>
